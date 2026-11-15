@@ -1,5 +1,6 @@
 const express = require('express');
-const { initDatabase } = require('./database/database');
+const { initDatabase, all } = require('./database/database');
+const { seed } = require('./database/seed');
 const chefRoutes = require('./routes/chefRoutes');
 const stationRoutes = require('./routes/stationRoutes');
 const bookingRoutes = require('./routes/bookingRoutes');
@@ -37,12 +38,17 @@ app.use(notFoundHandler);
 // Centralized error handling middleware
 app.use(errorHandler);
 
-// Start server after ensuring database schema is initialized
+// Start server after ensuring database schema is initialized and seeded
 let server;
 if (require.main === module) {
     initDatabase()
-        .then(() => {
+        .then(async () => {
             console.log('Database initialized successfully.');
+            const existing = await all('SELECT COUNT(*) as count FROM chefs');
+            if (!existing || existing[0].count === 0) {
+                console.log('Database is empty. Automatically populating initial data...');
+                await seed(true);
+            }
             server = app.listen(PORT, () => {
                 console.log(`KitchenKeys Cloud Kitchen API running on http://localhost:${PORT}`);
             });
