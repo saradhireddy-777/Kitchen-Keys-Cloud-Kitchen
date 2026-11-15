@@ -1,0 +1,24 @@
+{
+  "name": "kitchenkeys-cloud-kitchen",
+  "version": "1.0.0",
+  "description": "KitchenKeys Cloud Kitchen Backend REST API with Node.js, Express.js and SQLite",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "seed": "node database/seed.js",
+    "test": "node tests/run-tests.js"
+  },
+  "keywords": [
+    "kitchenkeys",
+    "cloud-kitchen",
+    "express",
+    "sqlite",
+    "rest-api"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "sqlite3": "^5.1.7"
+  }
+}
