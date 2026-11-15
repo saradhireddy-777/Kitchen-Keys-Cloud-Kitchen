@@ -8,6 +8,7 @@ This backend manages cloud kitchen operations across chefs, cooking stations, an
 
 ## 📋 Table of Contents
 
+- [Group Members & Contribution Breakdown](#-group-members--contribution-breakdown)
 - [Features](#-features)
 - [Project Architecture](#-project-architecture)
 - [Database Schema & Design](#-database-schema--design)
@@ -19,6 +20,18 @@ This backend manages cloud kitchen operations across chefs, cooking stations, an
   - [Bookings Endpoints (with SQL JOIN & Conflict Detection)](#3-bookings-api)
 - [HTTP Status Codes Reference](#-http-status-codes-reference)
 - [Postman Collection & Testing Guide](#-postman-collection--testing-guide)
+
+---
+
+## 👥 Group Members & Contribution Breakdown
+
+| Sl. No. | Member Name | Registration Number | Assigned Module & Key Responsibilities |
+|:---:|---|:---:|---|
+| 1 | **Vijaya Saradhi Reddy** | `252U1R3072` | **System Architecture & Booking Engine**: Server bootstrap (`server.js`), bookings module (`controllers/bookingController.js`, `routes/bookingRoutes.js`), SQL JOIN details aggregation (`GET /bookings/details`), and booking time-slot overlap conflict detection algorithm (HTTP 409). |
+| 2 | **Mujib Khan** | `252U1R3073` | **Database Engineering & Data Layer**: SQLite relational schema design (`database/schema.sql`), foreign key enforcement (`PRAGMA foreign_keys = ON;`), prepared statement abstraction layer (`database/database.js`), and database seeder (`database/seed.js`). |
+| 3 | **Ram Karthik** | `252U1R3086` | **Chefs Module & Validation Engine**: Chefs CRUD operations (`controllers/chefController.js`, `routes/chefRoutes.js`), email uniqueness verification, and centralized validation utility (`utils/validation.js` - ID, email, phone, and date/time format validation). |
+| 4 | **Karthikeya** | `252U1R3084` | **Stations Module, Filtering & Sorting**: Stations CRUD operations (`controllers/stationController.js`, `routes/stationRoutes.js`), station operational status enforcement (`Active`, `Inactive`, `Maintenance`), cuisine search filter (`?cuisine=Indian`), and whitelisted sorting system (A-Z, Z-A, and `?sort=colour` validation). |
+| 5 | **Madhu** | `252U1R3060` | **Error Handling, Testing & API Verification**: Centralized error middleware (`middleware/errorHandler.js` for malformed JSON, constraints, 404s, and 500s), automated test suite with 66 test assertions (`tests/run-tests.js`), and comprehensive Postman collection preparation (`KitchenKeys_Cloud_Kitchen.postman_collection.json`). |
 
 ---
 
